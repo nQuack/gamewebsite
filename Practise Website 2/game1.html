@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title>Brawl Stars</title>
+    <link href="main.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        .highlight-button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-family: Inter;
+            font-weight: bold;
+            font-size: 16px;
+            color: white;
+            background-color: #00a2ff; 
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 0 0 10px #00a2ff, 0 0 20px #00a2ff;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-button:hover {
+            background-color: #0080cc;
+            box-shadow: 0 0 15px #00bfff, 0 0 25px #00bfff;
+            transform: scale(1.05);
+        }
+    </style>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
+        }, false);
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var coll = document.getElementsByClassName("collapsible");
+            for (let i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Brawl Stars</h1>
+    </header>
+
+    <button class="collapsible">Downloads</button>
+    <div class="content">
+        <p>Brawl Stars has over 400 million downloads</p>
+    </div>
+
+    <button class="collapsible">Fun Facts</button>
+    <div class="content">
+        <p>In 2020, Brawl Stars had the second highest gross of any mobile game in Europe. It grossed US$526 million in total in 2020, which accounted for more than half its life time revenue.</p>
+        <p>Brawl Stars is a multiplayer online battle arena and third-person hero shooter video game developed and published by Finnish video game company Supercell. The game was released worldwide on 12 December 2018, on iOS and Android platforms. The game features a variety of game modes, each with a distinctive objective. Players are able to choose from a large selection of unlockable characters, called "Brawlers", whom each have different abilities and playstyles</p>
+    </div>
+
+    <nav class="info">
+        <a href="index.html" class="highlight-button">Go Back</a>
+    </nav>
+</body>
+</html>

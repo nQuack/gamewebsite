@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Brawl Stars</title>
+    <link href="main.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <script>
+        window.addEventListener('scroll', () => {
+            document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
+        }, false);
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var coll = document.getElementsByClassName("collapsible");
+            for (let i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>TITLE</h1>
+    </header>
+    <nav>Made by Noah Quach</nav>
+
+    <button class="collapsible">Downloads</button>
+    <div class="content">
+        <p>Placeholder</p>
+    </div>
+
+    <button class="collapsible">Fun Facts</button>
+    <div class="content">
+        <p>Placeholder</p>
+    </div>
+
+    <nav class="info"><a href="index.html">Go Back</a></nav>
+</body>
+</html>

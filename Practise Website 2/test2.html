@@ -1,0 +1,136 @@
+<!-- https://css-tricks.com/ (this is the website I used to help with the background and formatting)--> 
+<html>
+<head>
+    <title>Noahs Game</title> <!-- title of webiste -->
+    <link href="main.css" rel="stylesheet" type="text/css"><!-- style sheet -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter"> <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"><!-- Font Wights -->
+</head>
+
+<body>
+    <header>
+        <h1>NOAH'S GAME STATISTICS</h1> <!-- title -->
+    </header>
+    <nav>Made by Noah</nav> <!-- subtitle -->
+
+    <div>
+        <a href="game1.html"><!-- game 1 (Brawl stars)--><img src="game1.png"  draggable="false" width="500"> <!-- settings such as the icon, non-draggable and width --></a>
+        <a href="game2.html"><img src="icon-bg.png" draggable="false" width="500"></a>
+        <a href="game3.html"><img src="icon-bg.png" draggable="false" width="500"></a>
+        <a href="game4.html"><img src="icon-bg.png" draggable="false" width="500"></a>
+        <a href="game5.html"><img src="icon-bg.png" draggable="false" width="500"></a>
+        <a href="game6.html"><img src="icon-bg.png" draggable="false" width="500"></a>
+        <a href="game7.html"><img src="icon-bg.png" draggable="false" width="500"></a>
+        <a href="game8.html"><img src="icon-bg.png" draggable="false" width="500"></a>
+        <a href="game9.html"><img src="icon-bg.png" draggable="false" width="500"></a>
+        <a href="game10.html"><img src="icon-bg.png" draggable="false" width="500"></a>
+        <a href="game11.html"><img src="icon-bg.png" draggable="false" width="500"></a>
+        <a href="game12.html"><img src="icon-bg.png" draggable="false" width="500"></a>
+    </div>
+
+    <script> // I found it easier to read this css segment if I wasn't switching tabs
+        document.addEventListener('dragstart', (e) => {
+            e.preventDefault(); // Stop drag from starting
+        });
+
+        window.addEventListener('scroll', () => { // Scroll variable tracking for --scroll CSS variable 
+            document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight)); // Current scroll gets divided by total window height
+        }, false);
+
+        // Smooth mouse wheel scrolling
+        let scrollTarget = window.scrollY; // Makes the scroll target to the position scrolled
+        let isScrolling = false; // Checks if smooth scolling is happening
+
+        // Function to create an easing effect to the target 
+        function ease(current, target, factor) { // functions are similar to variables but they can calculate and change values.
+            return current + (target - current) * factor;
+        }
+
+        // Function to handle smooth scroll
+        function smoothScroll() {
+            isScrolling = true; // check if smooth scroll is happening
+
+            // Check if we are smooth scrolling within the page limits
+            scrollTarget = Math.max(0, scrollTarget);
+            scrollTarget = Math.min(scrollTarget, document.body.scrollHeight - window.innerHeight);
+
+            // Get the current scroll position
+            let currentScroll = window.scrollY; 
+
+            // If not close enough to the current scroll position, keep scrolling 
+            if (Math.abs(scrollTarget - currentScroll) > 0.5) {
+                // Scroll a bit closer
+                window.scrollTo(0, ease(currentScroll, scrollTarget, 0.05)); // Slower easing
+                requestAnimationFrame(smoothScroll); // Use smooth scroll again on the next frame
+            } else {
+                // If we get close enought we can just jump the the position
+                window.scrollTo(0, scrollTarget);
+                isScrolling = false;
+            }
+        }
+
+        // listen for scrolling
+        window.addEventListener('wheel', (e) => {
+            e.preventDefault(); // Stops the default mouse scrolling
+            scrollTarget += e.deltaY * 0.7; // Adding to scroll target, basically creating a scroll target based of the scroll activity
+
+            // start smooth scroll incase it didn't start for some reason
+            if (!isScrolling) {
+                smoothScroll();
+            }
+        }, { passive: false }); // i'm pretty sure this is needed for the prevention of the default scrolling
+    </script>
+
+    <!-- 
+    // Click and drag scrolling with easing. (DISABLED, it kept creating bugs)
+
+    let isDragging = false; // Check if user is dragging
+    let startY, startScrollTop; // Gets the Y position and scroll position
+    let dragTarget = window.scrollY; // This will act like scrollTarget but for dragging
+    let isDragScrolling = false; // Check if easing drag is active
+
+    // Function to handle smooth scroll
+    function smoothDragScroll() {
+        let current = window.scrollY;
+        if (Math.abs(dragTarget - current) > 0.5) {
+            window.scrollTo(0, ease(current, dragTarget, 0.15)); // Slower easing when dragging
+            requestAnimationFrame(smoothDragScroll);
+        } else {
+            window.scrollTo(0, dragTarget);
+            isDragScrolling = false;
+        }
+    }
+
+    document.addEventListener('mousedown', (e) => {
+        isDragging = true; // Dragging started
+        startY = e.pageY; // Record starting drag position
+        startScrollTop = window.scrollY; // Record position at the start of the drag
+        document.body.style.cursor = 'grabbing'; // Change the cursor to grabbing because it looks aesthetic pleasing
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return; // if not dragging skip the scroll
+        const dy = e.pageY - startY; // subtracting the height of the page
+        dragTarget = startScrollTop - dy; // calculate where we want to scroll to by using the subtracted values
+
+        if (!isDragScrolling) { 
+            isDragScrolling = true;
+            smoothDragScroll(); // start easing drag movement
+        }
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false; //stop smooth scroll and dragging
+        document.body.style.cursor = 'default'; // change cursor back
+    });
+
+    document.addEventListener('mouseleave', () => {
+        isDragging = false; //stop smooth scroll and dragging
+        document.body.style.cursor = 'default'; // change cursor back
+    });
+    -->
+
+</body>
+</html>
